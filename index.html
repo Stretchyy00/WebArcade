@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>VIP SLOT PORTAL - RESMI & TERPERCAYA</title>
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Teko:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Style -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOAST BANNER ALERT -->
+  <div id="toastNotification" class="toast-banner"></div>
+
+  <!-- STATE LOADING OVERLAY -->
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <p>Memproses transaksi...</p>
+  </div>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="brand-logo" onclick="switchCategory('all')">VIPSLOT88</div>
+    
+    <div class="user-panel">
+      <div class="balance-badge" onclick="openTopUpModal()" title="Klik untuk Deposit Saldo">
+        <i class="fa-solid fa-wallet"></i>
+        <span id="userBalance">Rp 0</span>
+      </div>
+      
+      <button class="btn-icon btn-logout" onclick="handleLogout()" title="Keluar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 4H18C19.1046 4 20 4.89543 20 6V18C20 19.1046 19.1046 20 18 20H13" stroke="#ef4444" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M3 12H14M14 12L10 8M14 12L10 16" stroke="#fca5a5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MARQUEE BAR -->
+  <div class="marquee-bar">
+    <div class="marquee-label">
+      <i class="fa-solid fa-bullhorn"></i> INFO
+    </div>
+    <div class="marquee-content">
+      Selamat datang di Portal Slot Resmi VIP. Dapatkan Bonus Deposit New Member 100%! RTP Live Server terupdate real-time setiap menit.
+    </div>
+  </div>
+
+  <!-- APP VIEWPORT -->
+  <div class="app-viewport">
+    
+    <!-- SIDEBAR NAV (DESKTOP) -->
+    <aside class="sidebar-nav">
+      <div class="nav-category-item active" onclick="switchCategory('all', this)">
+        <i class="fa-solid fa-fire icon-nav"></i> Populer
+      </div>
+      <div class="nav-category-item" onclick="switchCategory('Slot', this)">
+        <i class="fa-solid fa-gamepad icon-nav"></i> Slot Online
+      </div>
+      <div class="nav-category-item" onclick="switchCategory('Casino', this)">
+        <i class="fa-solid fa-dice icon-nav"></i> Live Casino
+      </div>
+      <div class="nav-category-item" onclick="switchCategory('Arcade', this)">
+        <i class="fa-solid fa-bullseye icon-nav"></i> Arcade Game
+      </div>
+      <div class="nav-category-item" onclick="openPromoModal()">
+        <i class="fa-solid fa-gift icon-nav"></i> Promosi
+      </div>
+      <div class="nav-category-item" onclick="openProfileModal()">
+        <i class="fa-solid fa-user icon-nav"></i> Akun Profil
+      </div>
+    </aside>
+
+    <!-- MAIN STAGE -->
+    <main class="main-stage">
+
+      <!-- BANNER CAROUSEL -->
+      <div class="banner-carousel" id="bannerCarousel">
+        <div class="carousel-track" id="carouselTrack">
+          
+          <div class="carousel-slide" style="background-image: url('Banner1.png');">
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <h3>WELCOME BONUS 100%</h3>
+              <p>Khusus Anggota Baru VIP Slot Portal Hari Ini</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide" style="background-image: url('Banner2.png');">
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <h3>EVENT DAILY JACKPOT</h3>
+              <p>Total Hadiah Ratusan Juta Rupiah Setiap Malam</p>
+            </div>
+          </div>
+
+          <div class="carousel-slide" style="background-image: url('Banner3.png');">
+            <div class="slide-overlay"></div>
+            <div class="slide-caption">
+              <h3>DEPOSIT AUTO 1 DETIK</h3>
+              <p>Bisa Pakai QRIS, Bank BCA, Mandiri & E-Wallet</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="carousel-pagination" id="carouselDots">
+          <div class="page-dot active" onclick="goToSlide(0)"></div>
+          <div class="page-dot" onclick="goToSlide(1)"></div>
+          <div class="page-dot" onclick="goToSlide(2)"></div>
+        </div>
+      </div>
+
+      <!-- JACKPOT COUNTER -->
+      <div class="jackpot-ticker-card">
+        <span class="jackpot-title"><i class="fa-solid fa-trophy"></i> GRAND JACKPOT</span>
+        <span class="jackpot-counter" id="jackpotVal">Rp 1.482.930.500</span>
+      </div>
+
+      <!-- PROVIDER SCROLL -->
+      <div class="provider-scroll">
+        <div class="provider-chip active" onclick="filterProvider('all', this)">Semua</div>
+        <div class="provider-chip" onclick="filterProvider('Pragmatic Play', this)">Pragmatic Play</div>
+        <div class="provider-chip" onclick="filterProvider('PG Soft', this)">PG Soft</div>
+        <div class="provider-chip" onclick="filterProvider('Habanero', this)">Habanero</div>
+        <div class="provider-chip" onclick="filterProvider('Spribe', this)">Spribe</div>
+      </div>
+
+      <!-- GAMES GRID -->
+      <div class="games-layout-grid" id="gamesGrid">
+        <!-- Rendered via JavaScript -->
+      </div>
+    </main>
+  </div>
+
+  <!-- MODERN FLOATING BOTTOM NAV (MOBILE) -->
+  <div class="bottom-nav-wrapper">
+    <nav class="mobile-bottom-nav">
+      <div class="bottom-nav-item active" onclick="switchCategory('all')">
+        <div class="nav-icon-container">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <span>Beranda</span>
+      </div>
+
+      <div class="bottom-nav-item" onclick="openPromoModal()">
+        <div class="nav-icon-container">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <span>Promosi</span>
+      </div>
+
+      <!-- Floating Main Action Button (Deposit) -->
+      <div class="deposit-float-wrapper">
+        <button class="btn-deposit-float" onclick="openTopUpModal()">
+          <i class="fa-solid fa-bolt"></i>
+        </button>
+        <span class="deposit-float-label">DEPOSIT</span>
+      </div>
+
+      <div class="bottom-nav-item" onclick="openChatModal()">
+        <div class="nav-icon-container">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <span>Livechat</span>
+      </div>
+
+      <div class="bottom-nav-item" onclick="openProfileModal()">
+        <div class="nav-icon-container">
+          <i class="fa-solid fa-user-gear"></i>
+        </div>
+        <span>Akun</span>
+      </div>
+    </nav>
+  </div>
+
+  <!-- AUTH MODAL -->
+  <div class="overlay-container" id="authOverlay" style="display: flex;">
+    <div class="modal-card">
+      <div class="tab-switcher">
+        <div class="tab-btn active" id="tabLogin" onclick="switchAuthTab('login')">LOGIN</div>
+        <div class="tab-btn" id="tabRegister" onclick="switchAuthTab('register')">DAFTAR</div>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="field-group">
+          <label>Username</label>
+          <input type="text" id="loginUser" class="input-control" placeholder="Masukkan username" required>
+        </div>
+        <div class="field-group">
+          <label>Password</label>
+          <input type="password" id="loginPass" class="input-control" placeholder="Masukkan password" required>
+        </div>
+        <button type="submit" class="btn-submit">MASUK</button>
+      </form>
+
+      <form id="registerForm" onsubmit="handleRegister(event)" style="display: none;">
+        <div class="field-group">
+          <label>Username Baru</label>
+          <input type="text" id="regUser" class="input-control" placeholder="Buat username" required>
+        </div>
+        <div class="field-group">
+          <label>Password Baru</label>
+          <input type="password" id="regPass" class="input-control" placeholder="Buat password" required>
+        </div>
+        <button type="submit" class="btn-submit">BUAT AKUN VIP</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PROFILE MODAL -->
+  <div class="overlay-container" id="profileModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h4>PROFIL ANGGOTA VIP</h4>
+        <span style="cursor:pointer;" onclick="closeProfileModal()"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <div class="field-group">
+        <label>Username</label>
+        <input type="text" id="profUser" class="input-control" readonly>
+      </div>
+      <div class="field-group">
+        <label>Status Akun</label>
+        <input type="text" value="VIP PLATINUM MEMBER" class="input-control" style="color:var(--gold-light); font-weight:bold;" readonly>
+      </div>
+      <div class="field-group">
+        <label>Total Saldo Virtual</label>
+        <input type="text" id="profBalance" class="input-control" readonly>
+      </div>
+      <button class="btn-submit" onclick="openTopUpModal(); closeProfileModal();">DEPOSIT SALDO</button>
+      <button class="btn-submit" style="background:#dc2626; color:#fff; margin-top:8px;" onclick="handleLogout()">LOGOUT</button>
+    </div>
+  </div>
+
+  <!-- PROMO MODAL -->
+  <div class="overlay-container" id="promoModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h4>PROMOSI & BONUS VIP</h4>
+        <span style="cursor:pointer;" onclick="closePromoModal()"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <div class="promo-card">
+        <h5>🎁 BONUS NEW MEMBER 100%</h5>
+        <p>Klaim tambahan saldo 100% hingga Rp 1.000.000 pada deposit pertama Anda.</p>
+        <button class="btn-submit" style="margin-top:6px; padding:6px;" onclick="claimPromo('Bonus New Member 100%')">KLAIM PROMO</button>
+      </div>
+      <div class="promo-card">
+        <h5>🔥 BONUS REBATE HARIAN 0.8%</h5>
+        <p>Pembagian bonus cashback otomatis dibagikan setiap jam 12:00 WIB.</p>
+        <button class="btn-submit" style="margin-top:6px; padding:6px;" onclick="claimPromo('Rebate Harian 0.8%')">KLAIM PROMO</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE CHAT MODAL -->
+  <div class="overlay-container" id="chatModal">
+    <div class="modal-card">
+      <div class="modal-head">
+        <h4>LIVE CHAT DUKUNGAN 24/7</h4>
+        <span style="cursor:pointer;" onclick="closeChatModal()"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <div class="chat-box" id="chatBox">
+        <div class="msg-bubble msg-cs">
+          Halo! Selamat datang di layanan Customer Service VIP. Ada yang bisa kami bantu mengenai deposit, withdraw, promo, atau kendala game?
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="input-control" placeholder="Ketik pesan (misal: deposit, bonus)..." onkeypress="handleChatKey(event)">
+        <button class="btn-submit" style="width:auto; margin-top:0; padding:0 16px;" onclick="sendChatMessage()">KIRIM</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPUP MODAL FLOW -->
+  <div class="overlay-container" id="topupModal">
+    <div class="modal-card modal-topup">
+      <div class="modal-head">
+        <h4>TOP UP SALDO</h4>
+        <span style="cursor:pointer; font-weight:700;" onclick="closeTopUpModal()"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+
+      <!-- STEP 1: INPUT NOMINAL & METODE -->
+      <div id="stepInput">
+        <label class="section-label">Pilihan Cepat (Quick Amount)</label>
+        <div class="quick-amount-grid">
+          <button type="button" class="quick-btn" onclick="selectQuickAmount(20000, this)">Rp20.000</button>
+          <button type="button" class="quick-btn" onclick="selectQuickAmount(50000, this)">Rp50.000</button>
+          <button type="button" class="quick-btn" onclick="selectQuickAmount(100000, this)">Rp100.000</button>
+          <button type="button" class="quick-btn" onclick="selectQuickAmount(500000, this)">Rp500.000</button>
+        </div>
+
+        <div class="field-group">
+          <label>Input Manual (Min. Rp10.000)</label>
+          <input type="number" id="manualAmount" class="input-control" placeholder="Masukkan nominal (contoh: 75000)" min="10000">
+        </div>
+
+        <label class="section-label">Pilih Metode Pembayaran</label>
+        <div class="payment-method-list">
+          <div class="method-category">Virtual Account</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'VA BCA')">🏦 Virtual Account BCA</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'VA Mandiri')">🏦 Virtual Account Mandiri</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'VA BRI')">🏦 Virtual Account BRI</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'VA BNI')">🏦 Virtual Account BNI</div>
+
+          <div class="method-category">Instant Transfer / E-Wallet</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'QRIS Instant')">⚡ QRIS Instant Transfer</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'E-Wallet DANA/OVO')">📱 E-Wallet (DANA, OVO, ShopeePay)</div>
+
+          <div class="method-category">Minimarket</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'Indomaret')">🏪 Indomaret</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'Alfamart')">🏪 Alfamart</div>
+
+          <div class="method-category">Kartu</div>
+          <div class="method-item" onclick="selectPaymentMethod(this, 'Kartu Debit/Kredit')">💳 Kartu Debit / Kredit</div>
+        </div>
+
+        <button class="btn-submit" style="margin-top: 15px;" onclick="processTopUpInput()">Lanjut / Konfirmasi</button>
+      </div>
+
+      <!-- STEP 2: RINGKASAN & INSTRUKSI PEMBAYARAN -->
+      <div id="stepSummary" style="display: none;">
+        <div class="timer-box">
+          Batas Waktu Pembayaran: <span id="paymentTimer">10:00</span>
+        </div>
+
+        <div class="summary-card">
+          <div class="summary-row"><span>Nominal Top-Up:</span><strong id="summaryNominal">Rp0</strong></div>
+          <div class="summary-row"><span>Biaya Admin:</span><strong id="summaryAdmin">Rp0</strong></div>
+          <div class="summary-row total"><span>Total Bayar:</span><strong id="summaryTotal">Rp0</strong></div>
+        </div>
+
+        <div class="paycode-box">
+          <span class="paycode-label">Kode Bayar / Nomor VA:</span>
+          <div class="paycode-row">
+            <strong id="payCodeVal">88300012345678</strong>
+            <button class="btn-copy" onclick="copyPayCode()">Salin</button>
+          </div>
+        </div>
+
+        <div class="accordion-section">
+          <div class="accordion-header" onclick="toggleAccordion(this)">Petunjuk Pembayaran ▾</div>
+          <div class="accordion-body">
+            <ol style="padding-left: 15px; font-size:0.75rem; color:var(--text-secondary);">
+              <li>Buka aplikasi m-Banking / ATM / Kasir minimarket.</li>
+              <li>Pilih menu Transfer / Pembayaran ke Nomor VA / Kode Bayar di atas.</li>
+              <li>Masukkan nominal sesuai dengan Total Bayar.</li>
+              <li>Simpan bukti transaksi setelah selesai.</li>
+            </ol>
+          </div>
+        </div>
+
+        <button class="btn-submit" style="margin-top: 12px;" onclick="simulateWebhookSuccess()">Simulasi Pembayaran Selesai</button>
+      </div>
+
+      <!-- STEP 3: STATUS / BUKTI TRANSAKSI -->
+      <div id="stepSuccess" style="display: none; text-align: center;">
+        <div class="success-icon">✓</div>
+        <h3 style="color: #22c55e; margin-bottom: 5px;">Top Up Berhasil!</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 15px;">Transaksi kamu telah diverifikasi oleh sistem.</p>
+
+        <div class="summary-card">
+          <div class="summary-row"><span>ID Transaksi:</span><strong id="successTrxId">-</strong></div>
+          <div class="summary-row"><span>Nominal Tambah:</span><strong id="successAmount" style="color:#22c55e;">Rp0</strong></div>
+          <div class="summary-row"><span>Saldo Saat Ini:</span><strong id="successFinalBalance">Rp0</strong></div>
+        </div>
+
+        <div style="display: flex; gap: 8px; margin-top: 15px;">
+          <button class="btn-submit" style="background: #334155; color: #fff;" onclick="showToast('Struk berhasil diunduh!', 'success')">Download Struk</button>
+          <button class="btn-submit" onclick="closeTopUpModal()">Selesai</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FULLSCREEN GAME VIEWPORT -->
+  <div class="fullscreen-game-container" id="fullscreenGameContainer">
+    <iframe id="gameFrame" src="" allowfullscreen="true" allow="autoplay; fullscreen; encrypted-media"></iframe>
+  </div>
+
+  <!-- CUSTOM NOTIFY MODAL -->
+  <div class="overlay-container" id="notifyOverlay">
+    <div class="notify-modal-card">
+      <div class="notify-icon" id="notifyIcon">💡</div>
+      <div class="notify-title" id="notifyTitle">Pemberitahuan</div>
+      <div class="notify-desc" id="notifyDesc">Pesan notifikasi.</div>
+      <button class="btn-submit" onclick="closeNotify()">OK</button>
+    </div>
+  </div>
+
+  <!-- Script JS -->
+  <script src="script.js"></script>
+</body>
+</html>

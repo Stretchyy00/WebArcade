@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaceman</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    
+    <audio id="soundFly" src="sounds/fly.wav" loop></audio>
+    <audio id="soundIdle" src="sounds/idle.wav" loop></audio>
+    <audio id="soundCrash" src="sounds/crash.wav"></audio>
+    <audio id="soundCashout" src="sounds/cashout.mp3"></audio>
+</head>
+
+<body>
+    <!-- =========================
+    PRAGMATIC PLAY LOADING SCREEN (DITAMBAHKAN DI SINI)
+    ========================= -->
+    <div id="pragmatic-loader" class="loader-overlay active">
+        <div class="pragmatic-content">
+            <!-- Logo Pragmatic Play -->
+            <div class="pragmatic-logo-wrapper">
+                <span class="pragmatic-text-white">PRAGMATIC </span>
+                <div class="pragmatic-circle-badge">
+                    <div class="pragmatic-crown">👑</div>
+                    <span class="pragmatic-text-play">PLAY</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar Oranye Kuning -->
+            <div class="pragmatic-loading-box">
+                <div class="pragmatic-loading-bar-bg">
+                    <div class="pragmatic-loading-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================
+    LANDING PAGE (TETAP UTUH)
+    ========================= -->
+    <div id="landingPage" class="landing-page">
+        <!-- STARS -->
+        <div class="stars"></div>
+        <div class="stars2"></div>
+    
+        <!-- PLANETS -->
+        <div class="planet planet-1"></div>
+        <div class="planet planet-2"></div>
+        <div class="planet planet-3"></div>
+    
+        <!-- METEOR -->
+        <div class="meteor"></div>
+        <div class="meteor meteor2"></div>
+    
+        <div class="landing-content">
+            <div class="planet-glow"></div>
+            <h1 class="landing-title">SPACEMAN</h1>
+            <p class="landing-subtitle">Crash Game</p>
+            <button class="play-btn" onclick="enterGame()">
+                <i class="fa-solid fa-play"></i> PLAY GAME
+            </button>
+        </div>
+    </div>
+
+    <!-- =========================
+    MAIN GAME (FULL SCREEN UI)
+    ========================== -->
+    <div class="game-container" id="mainGame" style="display:none;">
+
+        <!-- HEADER (PROFIL & SALDO TANPA TOPUP) -->
+        <div class="header">
+            <div class="profile-section">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="profile-info">
+                    <span class="username">Player One</span>
+                    <span class="user-status">VIP Level 1</span>
+                </div>
+            </div>
+
+            <div class="balance-box">
+                <div class="balance-label">BALANCE</div>
+                <div id="balance">Rp 25.000</div>
+            </div>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div class="game-screen">
+            <div class="moon-container" id="moon-island">
+                <div class="moon-multiplier" id="multiplier">1.00x</div>
+            </div>
+            <div class="status-display" id="game-status"></div>
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <!-- CONTROL PANEL -->
+        <div class="control-panel">
+
+            <!-- TOP BAR -->
+            <div class="panel-top-bar">
+                <div class="stats-players">
+                    <span>25 <i class="fa-solid fa-user"></i></span>
+                    |
+                    <span style="color:#00ffcc;">0 <i class="fa-solid fa-user"></i></span>
+                </div>
+
+                <div class="cashed-status">
+                    <span class="badge-cashed">CASHED</span>
+                    <span class="cashed-amount" id="cashed-profit">Rp 0</span>
+                </div>
+            </div>
+
+            <!-- QUICK BET -->
+            <div class="quick-bets">
+                <button class="btn-quick" onclick="addBet(10000)">
+                    <span class="plus">+</span>10k
+                </button>
+                <button class="btn-quick" onclick="addBet(20000)">
+                    <span class="plus">+</span>20k
+                </button>
+                <button class="btn-quick" onclick="addBet(50000)">
+                    <span class="plus">+</span>50k
+                </button>
+                <button class="btn-quick" onclick="addBet(100000)">
+                    <span class="plus">+</span>100k
+                </button>
+            </div>
+
+            <!-- BET SELECTOR -->
+            <div class="bet-selector-row">
+                <!-- RESET -->
+                <button class="btn-icon" id="btn-undo" onclick="resetBet()">
+                    <i class="fa-solid fa-rotate-left"></i>
+                </button>
+
+                <!-- CUSTOM BET -->
+                <div class="custom-bet-container">
+                    <button class="arrow-btn" onclick="adjustBet(-1)">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <!-- CLICKABLE BET -->
+                    <div class="bet-value-display" id="bet-click-area">
+                        <span class="label">Bet</span>
+                        <span class="val" id="display-bet-amount">Rp 10.000</span>
+                    </div>
+
+                    <button class="arrow-btn arrow-right" onclick="adjustBet(1)">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- DOUBLE -->
+                <button class="btn-action-side" onclick="doubleBet()">2x</button>
+            </div>
+
+            <!-- MAIN BUTTON -->
+            <div class="main-action-row">
+                <button class="btn-icon">
+                    <i class="fa-solid fa-chart-simple"></i>
+                </button>
+
+                <button class="btn-confirm" id="btn-action">
+                    <span class="check-icon">
+                        <i class="fa-solid fa-check"></i>
+                    </span>
+                    CONFIRM BET
+                </button>
+
+                <button class="btn-icon">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- =========================
+    BET CALCULATOR MODAL
+    ========================== -->
+    <div id="betModal" class="bet-modal hidden">
+        <div class="bet-modal-content">
+            <div class="bet-header">
+                <span>MASUKKAN BET</span>
+                <button id="closeBetModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="bet-display" id="betInputDisplay">10000</div>
+
+            <div class="bet-keypad">
+                <button onclick="appendBet('1')">1</button>
+                <button onclick="appendBet('2')">2</button>
+                <button onclick="appendBet('3')">3</button>
+
+                <button onclick="appendBet('4')">4</button>
+                <button onclick="appendBet('5')">5</button>
+                <button onclick="appendBet('6')">6</button>
+
+                <button onclick="appendBet('7')">7</button>
+                <button onclick="appendBet('8')">8</button>
+                <button onclick="appendBet('9')">9</button>
+
+                <button class="danger-btn" onclick="clearBet()">C</button>
+                <button onclick="appendBet('0')">0</button>
+                <button class="danger-btn" onclick="deleteBet()">
+                    <i class="fa-solid fa-delete-left"></i>
+                </button>
+            </div>
+
+            <button class="confirm-bet-btn" onclick="confirmBet()">CONFIRM BET</button>
+        </div>
+    </div>
+
+    <!-- =========================
+    MODERN ALERT
+    ========================== -->
+    <div class="custom-alert" id="customAlert">
+        <div class="custom-alert-box">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-title" id="alertTitle">Notification</div>
+            <div class="alert-message" id="alertMessage">Message here</div>
+            <button class="alert-btn" onclick="closeAlert()">OK</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT OTOMATIS: DARI LOADING PRAGMATIC KE LANDING PAGE SPACEMAN -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const pragmaticLoader = document.getElementById('pragmatic-loader');
+                if (pragmaticLoader) {
+                    pragmaticLoader.classList.remove('active');
+                }
+            }, 2300); // Otomatis menutup loading screen setelah bar terisi penuh
+        });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

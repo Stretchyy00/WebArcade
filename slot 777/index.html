@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyberpunk Slot Machine 777</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="luxury-casino-hall">
+        <div class="modern-cabinet" id="slot-cabinet">
+            
+            <!-- HEADER BARIS ATAS -->
+            <div class="premium-header">
+                <h1 class="gold-text">JACKPOT 777</h1>
+                <p class="sub-text">CYBERPUNK CASINO EDITION</p>
+            </div>
+
+            <!-- ZONA UTAMA REEL / MESIN SLOT -->
+            <div class="game-center-zone">
+                <div class="screen-3d-bezel">
+                    <div class="modern-screen-frame">
+                        <div class="glass-glare"></div>
+                        
+                        <!-- LIGHT BAR UNTUK NOTIFIKASI WIN/JACKPOT -->
+                        <div class="win-light-bar" id="light-bar">READY TO SPIN</div>
+                        
+                        <!-- BOX REEL EMBLEM (5 REELS) -->
+                        <div class="digital-reels-box">
+                            <div class="laser-payline"></div>
+                            
+                            <div class="reel-container"><div class="reel" id="reel1">🍒</div></div>
+                            <div class="reel-container"><div class="reel" id="reel2">🍋</div></div>
+                            <div class="reel-container"><div class="reel" id="reel3">🍊</div></div>
+                            <div class="reel-container"><div class="reel" id="reel4">🍇</div></div>
+                            <div class="reel-container"><div class="reel" id="reel5">🍉</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TUAS SAMPING -->
+                <div class="attached-lever" id="lever-trigger">
+                    <div class="lever-mount"></div>
+                    <div class="steel-rod" id="tuas-shaft"></div>
+                    <div class="chrome-ball" id="tuas-ball"></div>
+                </div>
+            </div>
+
+            <!-- DISPLAY OLED BALANCE & BET -->
+            <div class="oled-dashboard">
+                <div class="oled-slot">
+                    <span class="oled-title" id="credits-label">BALANCE</span>
+                    <div class="oled-value data-gold" id="saldo-display">Rp 50.000</div>
+                </div>
+                <div class="oled-slot">
+                    <span class="oled-title">TOTAL BET</span>
+                    <input type="number" class="oled-input" id="taruhan-input" value="1000" step="1000" min="1000" max="20000">
+                </div>
+                <div class="oled-slot">
+                    <span class="oled-title">WIN</span>
+                    <div class="oled-value data-red" id="win-display">Rp 0</div>
+                </div>
+            </div>
+
+            <!-- STATUS MATRIX MESSAGE -->
+            <div class="matrix-msg-box">
+                <span id="message">TEKAN SPIN UNTUK MEMULAI PERMAINAN!</span>
+            </div>
+
+            <!-- DECK KONTROL TOMBOL -->
+            <div class="modern-control-deck">
+                <div class="control-top-row">
+                    <button class="deck-btn info-btn" id="paytable-btn">INFO</button>
+                    <button class="deck-btn white-border" id="bet-minus">- BET</button>
+                    <button class="deck-btn white-border" id="bet-plus">+ BET</button>
+                    <button class="deck-btn gold-border" id="max-bet-btn">MAX BET</button>
+                    <button class="deck-btn gold-border" id="auto-spin-btn">AUTO</button>
+                    <button class="deck-btn info-btn" id="refill-btn">REFILL</button>
+                </div>
+
+                <button class="deck-btn main-spin-btn" id="spin-btn">SPIN</button>
+            </div>
+
+            <!-- TRAY TEMPAT MUNCUL EFEK KOIN -->
+            <div class="coin-return-tray" id="waterfall-container">
+                <div class="tray-dark-hole">
+                    <div class="falling-coins" id="coins-effect">🪙 🪙 🪙 🪙 🪙</div>
+                </div>
+                <div class="tray-lip">COIN RETURN</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL BONUS & FREE SPINS -->
+    <div class="bonus-modal-overlay" id="bonus-modal">
+        <div class="bonus-modal-card">
+            <div class="modal-icon" id="modal-icon">🎰</div>
+            <h2 id="modal-title">BONUS FEATURE</h2>
+            <p id="modal-desc">Selamat Anda Mendapatkan Bonus Spin!</p>
+            <div class="modal-badge" id="modal-badge">+10 SPINS</div>
+            <button class="deck-btn main-spin-btn" id="modal-btn">CLAIM</button>
+        </div>
+    </div>
+
+    <!-- POPUP PAYTABLE / INFO OVERLAY -->
+    <div class="popup-overlay" id="overlay-bg"></div>
+    <div class="visual-paytable" id="pop-paytable">
+        <div class="paytable-header">
+            <h3>TABEL KEMENANGAN</h3>
+            <button class="close-info-btn" id="close-paytable">&times;</button>
+        </div>
+        <div class="paytable-scroll">
+            <div class="visual-row jackpot-row">
+                <span class="symbols-display">♦️ ♦️ ♦️</span>
+                <span class="prize-value">SCATTER (FREE SPINS)</span>
+            </div>
+            <div class="visual-row">
+                <span class="symbols-display">🍉 🍉 🍉</span>
+                <span class="prize-value">Up to 200x BET</span>
+            </div>
+            <div class="visual-row">
+                <span class="symbols-display">🍇 🍇 🍇</span>
+                <span class="prize-value">Up to 100x BET</span>
+            </div>
+            <div class="visual-row">
+                <span class="symbols-display">🍊 🍊 🍊</span>
+                <span class="prize-value">Up to 50x BET</span>
+            </div>
+            <div class="visual-row">
+                <span class="symbols-display">🍋 🍋 🍋</span>
+                <span class="prize-value">Up to 25x BET</span>
+            </div>
+            <div class="visual-row">
+                <span class="symbols-display">🍒 🍒 🍒</span>
+                <span class="prize-value">Up to 35x BET</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

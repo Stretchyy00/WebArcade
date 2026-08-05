@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majok Ways 2 - Premium Skip Engine</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. PRAGMATIC PLAY LOADING SCREEN -->
+    <div id="pragmatic-loader" class="loader-overlay active">
+        <div class="pragmatic-content">
+            <!-- Logo Pragmatic Play -->
+            <div class="pragmatic-logo-wrapper">
+                <span class="pragmatic-text-white">PRAGMATIC </span>
+                <div class="pragmatic-circle-badge">
+                    <div class="pragmatic-crown">👑</div>
+                    <span class="pragmatic-text-play">PLAY</span>
+                </div>
+            </div>
+
+            <!-- Loading Bar Oranye Kuning (Tanpa Ring Spinner) -->
+            <div class="pragmatic-loading-box">
+                <div class="pragmatic-loading-bar-bg">
+                    <div class="pragmatic-loading-bar-fill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAHJONG WAYS 2 LOADING SCREEN -->
+    <div id="mahjong-loader" class="loader-overlay">
+        <div class="mahjong-bg"></div>
+        <div class="mahjong-loader-content">
+            <div class="mahjong-progress-container">
+                <div class="mahjong-progress-bar" id="mahjong-bar"></div>
+            </div>
+            <div class="mahjong-progress-text" id="mahjong-percent">0%</div>
+            <button id="get-started-btn" class="get-started-btn hidden" onclick="startGameSession()">GET STARTED</button>
+        </div>
+    </div>
+
+    <!-- 3. GAME CONTAINER MAHJONG WAYS 2 -->
+    <div class="game-container">
+        <div class="dragon-header">
+            <div class="dragon-art left">🐲</div>
+            <div class="game-logo-title">
+                <span class="gold-text">MAJOK</span>
+                <span class="red-text">WAYS 2</span>
+            </div>
+            <div class="dragon-art right">🐲</div>
+        </div>
+
+        <div class="ticker-container">
+            <div class="ticker-wrapper">
+                <div class="ticker-track">
+                    <div class="ticker-item">💸 Punya duit? ga kepake? Depoin aja dulu, siapa tau WD 😎</div>
+                    <div class="ticker-item">🤑 Katanya cuma coba-coba... tau tau saldo masuk rekening 👀</div>
+                    <div class="ticker-item">🎰 Katanya iseng 10 ribu… sekarang malah mantengin RTP terus 👀</div>
+                    <div class="ticker-item">🚀 Jangan kasih kendor! Siapa tau spin berikutnya MAXWIN 👑</div>
+                </div>
+                <div class="ticker-track" aria-hidden="true">
+                    <div class="ticker-item">💸 Punya duit? ga kepake? Depoin aja dulu, siapa tau WD 😎</div>
+                    <div class="ticker-item">🤑 Katanya cuma coba-coba... tau tau saldo masuk rekening 👀</div>
+                    <div class="ticker-item">🎰 Katanya iseng 10 ribu… sekarang malah mantengin RTP terus 👀</div>
+                    <div class="ticker-item">🚀 Jangan kasih kendor! Siapa tau spin berikutnya MAXWIN 👑</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="multiplier-bar">
+            <span class="mult active" id="m1">x1</span>
+            <span class="mult" id="m2">x2</span>
+            <span class="mult" id="m3">x3</span>
+            <span class="mult" id="m5">x5</span>
+        </div>
+
+        <div class="grid-wrapper">
+            <div class="frame-corner top-left"></div>
+            <div class="frame-corner top-right"></div>
+            <div class="frame-corner bottom-left"></div>
+            <div class="frame-corner bottom-right"></div>
+            
+            <div id="slot-grid" class="slot-grid"></div>
+        </div>
+        
+        <div class="status-panel">
+            <div class="status-box">
+                <span class="label">SALDO</span>
+                <span class="value" id="balance-display">100,000.00</span>
+            </div>
+            <div class="status-box clickable-bet" onclick="openBetMenu()">
+                <span class="label">TARUHAN</span>
+                <span class="value" id="bet-display">12.00</span>
+            </div>
+            <div class="status-box highlighted">
+                <span class="label">TOTAL MENANG</span>
+                <span class="value" id="win-display">0.00</span>
+            </div>
+        </div>
+
+        <div class="control-panel-bottom">
+            <button id="turbo-btn" class="side-control-btn" onclick="toggleTurbo()">
+                <div class="icon">⚡</div>
+                <div class="text">TURBO</div>
+            </button>
+
+            <button id="bet-down" class="math-btn" onclick="changeBetInstant(-1)">−</button>
+
+            <div class="spin-wrapper">
+                <button id="spin-btn" onclick="clickSpinController()">
+                    <div id="spin-icon-core" class="spin-arrow"></div>
+                </button>
+            </div>
+
+            <button id="bet-up" class="math-btn" onclick="changeBetInstant(1)">+</button>
+
+            <button id="auto-btn" class="side-control-btn" onclick="openAutoMenu()">
+                <div class="icon" id="auto-icon">▶</div>
+                <div class="text" id="auto-text">AUTO</div>
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL BONUS -->
+    <div id="custom-modal" class="modal-overlay">
+        <div class="screen-corner top-left-corner">囍</div>
+        <div class="screen-corner top-right-corner">囍</div>
+        <div class="screen-corner bottom-left-corner">囍</div>
+        <div class="screen-corner bottom-right-corner">囍</div>
+        
+        <div class="floating-tiles-bg">
+            <div class="f-tile t1">🀅</div>
+            <div class="f-tile t2">🀐</div>
+            <div class="f-tile t3">🀄</div>
+            <div class="f-tile t4">🀅</div>
+            <div class="f-tile t5">🀐</div>
+        </div>
+
+        <div class="modal-box premium-banner">
+            <div class="banner-border">
+                <h3 id="modal-title" class="fire-glow-text">INFO GAME</h3>
+                <div id="modal-msg-wrap">
+                    <p id="modal-message" class="sub-banner-text">Pesan disini...</p>
+                </div>
+                
+                <div id="giant-spin-count" class="giant-count-box hidden">
+                    <span id="giant-num">10</span><span id="giant-x">x</span>
+                </div>
+
+                <p id="modal-footer-tip" class="footer-banner-text">SIAPKAN AKSI ANDA!</p>
+
+                <div id="modal-buttons" class="modal-buttons-center"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL BET -->
+    <div id="bet-modal" class="bet-modal-overlay" onclick="closeBetMenu()">
+        <div class="bet-bottom-sheet" onclick="event.stopPropagation()">
+            <div class="bet-header">
+                <h3>Bet Options</h3>
+                <span class="close-bet" onclick="closeBetMenu()">×</span>
+            </div>
+            
+            <div class="bet-table-header">
+                <span>Bet Size</span>
+                <span>Bet Level</span>
+                <span>Base Bet</span>
+                <span>Bet Amount</span>
+            </div>
+
+            <div class="bet-selectors-container">
+                <div class="center-marker-line">
+                    <span class="operator-x op-1">×</span>
+                    <span class="operator-x op-2">×</span>
+                    <span class="operator-eq">=</span>
+                </div>
+
+                <div class="bet-col" id="size-selector">
+                    <div class="bet-opt" data-val="0.03">0.03</div>
+                    <div class="bet-opt" data-val="0.10">0.10</div>
+                    <div class="bet-opt" data-val="0.30">0.30</div>
+                    <div class="bet-opt" data-val="0.90">0.90</div>
+                </div>
+
+                <div class="bet-col" id="level-selector">
+                    <div class="bet-opt" data-val="1">1</div>
+                    <div class="bet-opt" data-val="2">2</div>
+                    <div class="bet-opt" data-val="3">3</div>
+                    <div class="bet-opt" data-val="4">4</div>
+                    <div class="bet-opt" data-val="5">5</div>
+                    <div class="bet-opt" data-val="6">6</div>
+                    <div class="bet-opt" data-val="7">7</div>
+                    <div class="bet-opt" data-val="8">8</div>
+                    <div class="bet-opt" data-val="9">9</div>
+                    <div class="bet-opt" data-val="10">10</div>
+                </div>
+
+                <div class="bet-col disabled-col" id="base-selector">
+                    <div class="bet-opt static-val">20</div>
+                </div>
+
+                <div class="bet-col disabled-col" id="amount-selector"></div>
+            </div>
+
+            <div class="bet-modal-footer">
+                <button class="bet-foot-btn max-btn" onclick="selectMaxBet()">Max Bet</button>
+                <button class="bet-foot-btn confirm-btn" onclick="confirmBetSelection()">Confirm</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- MODAL AUTO SPIN -->
+    <div id="auto-spin-modal" class="bet-modal-overlay" onclick="closeAutoMenu()">
+        <div class="bet-bottom-sheet" onclick="event.stopPropagation()">
+            <div class="bet-header">
+                <h3>Putaran Otomatis</h3>
+                <span class="close-bet" onclick="closeAutoMenu()">×</span>
+            </div>
+            
+            <div class="auto-menu-body">
+                <div class="auto-menu-section-title">Jumlah Putaran</div>
+                <div class="auto-spin-options-grid">
+                    <div class="auto-spin-opt selected" data-count="10" onclick="selectAutoCount(10)">10</div>
+                    <div class="auto-spin-opt" data-count="30" onclick="selectAutoCount(30)">30</div>
+                    <div class="auto-spin-opt" data-count="50" onclick="selectAutoCount(50)">50</div>
+                    <div class="auto-spin-opt" data-count="80" onclick="selectAutoCount(80)">80</div>
+                    <div class="auto-spin-opt" data-count="100" onclick="selectAutoCount(100)">100</div>
+                </div>
+            </div>
+    
+            <div class="bet-modal-footer">
+                <button class="bet-foot-btn confirm-btn" style="width: 100%; grid-column: span 2;" onclick="confirmAutoSpinSelection()">Mulai Putaran Otomatis</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

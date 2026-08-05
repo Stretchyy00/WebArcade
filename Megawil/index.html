@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mega Wheel Pragmatic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="game-header">
+        <div class="game-title">MEGA WHEEL <span class="badge-live">LIVE</span></div>
+        <div class="balance-box">
+            <span class="label">SALDO</span>
+            <span id="balance-display" class="value">Rp 100.000</span>
+        </div>
+    </div>
+
+    <div class="main-display">
+        <div class="multiplier-box">
+            <div class="box-title">MEGA MULTIPLIER</div>
+            <div id="multiplier-screen" class="screen-value">—</div>
+        </div>
+
+        <div class="wheel-container">
+            <div class="pointer-container">
+                <div class="pointer-cap"></div>
+                <div class="pointer"></div>
+            </div>
+            <div class="wheel-scaler">
+                <canvas id="wheelCanvas" width="600" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-area">
+        <div class="info-bar">
+            <div class="total-bet">TOTAL TARUHAN: <span id="total-bet-display" class="yellow">Rp 0</span></div>
+            <div class="history-container">
+                <span class="hist-label">RIWAYAT</span>
+                <div id="history-row" class="history-row"></div>
+            </div>
+        </div>
+
+        <div class="betting-grid">
+            <button class="bet-btn num-1" data-value="1"><span class="num">1</span><span class="odds">x1</span></button>
+            <button class="bet-btn num-2" data-value="2"><span class="num">2</span><span class="odds">x2</span></button>
+            <button class="bet-btn num-5" data-value="5"><span class="num">5</span><span class="odds">x5</span></button>
+            <button class="bet-btn num-8" data-value="8"><span class="num">8</span><span class="odds">x8</span></button>
+            <button class="bet-btn num-10" data-value="10"><span class="num">10</span><span class="odds">x10</span></button>
+            <button class="bet-btn num-15" data-value="15"><span class="num">15</span><span class="odds">x15</span></button>
+            <button class="bet-btn num-20" data-value="20"><span class="num">20</span><span class="odds">x20</span></button>
+            <button class="bet-btn num-30" data-value="30"><span class="num">30</span><span class="odds">x30</span></button>
+            <button class="bet-btn num-40" data-value="40"><span class="num">40</span><span class="odds">x40</span></button>
+        </div>
+
+        <div class="action-bar">
+            <button id="clear-btn" class="btn-clear">BATALKAN</button>
+            <button id="spin-btn" class="btn-spin">PUTAR SEKARANG</button>
+        </div>
+    </div>
+
+    <div id="win-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-glow"></div>
+            <h2 id="modal-title">MENANG!</h2>
+            <p id="modal-number-info">Angka Keluar: <span id="modal-winning-num">0</span></p>
+            <div id="modal-prize-box" class="prize-box">
+                <span class="prize-label">KEMENANGAN</span>
+                <span id="modal-payout">Rp 0</span>
+            </div>
+            <button id="modal-close-btn" class="btn-modal-close">LANJUTKAN</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

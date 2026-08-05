@@ -1,0 +1,596 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --gold: #e5c158;
+    --gold-bright: #ffd700;
+    --gold-dark: #aa8416;
+    --gray-dark: #121214;
+    --gray-mid: #222226;
+    --gray-light: #44444e;
+    --steel: #d1d5db;
+    --neon-red: #ff3b30;
+    --neon-blue: #00eeff;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: '-apple-system', BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: radial-gradient(circle at center, #1f1f2e 0%, #08080c 100%);
+    color: #fff;
+}
+
+/* CONTAINER FULLSCREEN LAYAR PENUH */
+.luxury-casino-hall {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* KABIN SLOT */
+.modern-cabinet {
+    background: linear-gradient(180deg, #181820 0%, #0d0d12 100%);
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* HEADER */
+.premium-header {
+    background: linear-gradient(90deg, transparent, rgba(229, 193, 88, 0.08), transparent);
+    border-bottom: 2px solid var(--gold);
+    padding: 10px 0;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.gold-text {
+    color: var(--gold-bright);
+    font-size: clamp(24px, 4vw, 42px);
+    font-weight: 900;
+    letter-spacing: 8px;
+    text-shadow: 0 0 12px rgba(255, 215, 0, 0.5), 0 4px 8px rgba(0,0,0,0.8);
+}
+
+.sub-text {
+    font-size: 11px;
+    color: var(--steel);
+    letter-spacing: 4px;
+    margin-top: 2px;
+    font-weight: bold;
+}
+
+/* REEL GAME AREA */
+.game-center-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.screen-3d-bezel {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2b2b36 0%, #15151c 100%);
+    border-radius: 20px;
+    border: 1px solid var(--gray-light);
+    box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.8), 
+        0 0 30px rgba(0, 238, 255, 0.1),
+        0 4px 8px rgba(255, 255, 255, 0.1) inset;
+    z-index: 1;
+}
+
+.modern-screen-frame {
+    background: #09090d;
+    border: 2px solid #2a2a38;
+    border-radius: 14px;
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 0 35px rgba(0,0,0,0.9);
+}
+
+.win-light-bar {
+    background: #15151c;
+    border: 1px solid var(--gray-light);
+    border-radius: 8px;
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px 0;
+    margin-bottom: 16px;
+    letter-spacing: 3px;
+    box-shadow: inset 0 0 8px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
+
+.win-light-bar.jackpot-blink {
+    background: var(--gold-bright);
+    color: #000;
+    border-color: var(--gold-bright);
+    animation: mechanicalFlash 0.2s infinite alternate;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+}
+
+.win-light-bar.freespin-mode-active {
+    background: #ff3b30;
+    color: #fff;
+    border-color: #ff453a;
+    box-shadow: 0 0 15px rgba(255, 59, 48, 0.6);
+}
+
+@keyframes mechanicalFlash {
+    0% { background: var(--gold); }
+    100% { background: var(--gold-bright); }
+}
+
+.glass-glare {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0) 40%);
+    border-radius: 14px;
+    pointer-events: none;
+    z-index: 4;
+}
+
+.digital-reels-box {
+    display: flex;
+    justify-content: space-between;
+    background: #050508;
+    padding: 16px;
+    border-radius: 12px;
+    gap: 12px;
+    border: 2px solid #1e1e28;
+    box-shadow: inset 0 10px 25px rgba(0,0,0,0.95);
+    position: relative;
+    overflow: hidden;
+}
+
+.laser-payline {
+    position: absolute;
+    top: 50%; 
+    left: 0; 
+    width: 100%; 
+    height: 4px;
+    background: rgba(229, 193, 88, 0.8);
+    box-shadow: 0 0 12px rgba(229, 193, 88, 1), 0 0 20px rgba(255, 215, 0, 0.5);
+    z-index: 3;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.reel-container {
+    flex: 1;
+    height: 130px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #3a3a42 0%, #ffffff 25%, #ffffff 75%, #3a3a42 100%);
+    border-radius: 8px;
+    border: 1px solid #555;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* REEL PEMENANG: Warna latar belakang & border kuning padat (tanpa shadow/glow) */
+.reel-container.winning-reel {
+    background: #ffd700 !important;
+    border: 3px solid #ffae00 !important;
+    box-shadow: none !important;
+    z-index: 2;
+}
+
+.reel {
+    font-size: clamp(38px, 5vw, 58px);
+    width: 100%;
+    text-align: center;
+    line-height: 130px;
+    height: 130px;
+    transform: translateY(0);
+    display: inline-block;
+}
+
+.spinning {
+    animation: reelScroll 0.12s infinite linear;
+}
+
+@keyframes reelScroll {
+    0% { transform: translateY(-60px); filter: blur(6px); opacity: 0.6; }
+    100% { transform: translateY(60px); filter: blur(6px); opacity: 0.6; }
+}
+
+/* TUAS SAMPING FISIK */
+.attached-lever {
+    width: 45px;
+    height: 180px;
+    position: absolute;
+    right: -35px; 
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.lever-mount {
+    position: absolute;
+    bottom: 20px; left: 5px; width: 34px; height: 34px;
+    background: linear-gradient(135deg, #444 0%, #111 100%);
+    border: 3px solid var(--gray-light);
+    border-radius: 50%;
+}
+
+.steel-rod {
+    position: absolute;
+    bottom: 35px; left: 18px; width: 10px; height: 100px;
+    background: linear-gradient(to right, #888, #fff, #333);
+    border-radius: 4px;
+    transform-origin: bottom center;
+    transition: transform 0.12s ease-in-out;
+}
+
+.chrome-ball {
+    position: absolute;
+    top: 20px; left: 3px; width: 40px; height: 40px;
+    background: radial-gradient(circle at 12px 12px, var(--gold-bright), var(--gold-dark), #3a2b02);
+    border-radius: 50%;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+    transition: top 0.12s ease-in-out;
+}
+
+.modern-cabinet.lever-pulled #tuas-shaft { transform: scaleY(0.15); }
+.modern-cabinet.lever-pulled #tuas-ball { top: 110px; }
+
+/* OLED DASHBOARD DISPLAY */
+.oled-dashboard {
+    max-width: 1100px;
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    z-index: 5;
+}
+
+.oled-slot {
+    flex: 1;
+    background: #09090d;
+    border: 1px solid #282835;
+    border-top: 3px solid var(--gold-dark);
+    padding: 10px 16px;
+    border-radius: 8px;
+    box-shadow: inset 0 3px 8px rgba(0,0,0,0.8);
+    transition: border-color 0.3s;
+}
+
+.oled-slot.bonus-active-border {
+    border-top-color: #ff3b30;
+}
+
+.oled-title {
+    display: block;
+    font-size: 11px;
+    color: #8888a0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+}
+
+.oled-value, .oled-input {
+    font-family: 'Consolas', monospace;
+    font-size: 22px;
+    color: var(--steel);
+    font-weight: bold;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.oled-input { color: var(--gold); }
+.data-gold { color: var(--gold); }
+.data-red { color: #ff453a; }
+
+.matrix-msg-box {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto 10px;
+    background: #050508;
+    border: 1px solid #22222d;
+    padding: 10px;
+    text-align: center;
+    min-height: 44px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    z-index: 5;
+}
+
+#message {
+    color: var(--steel);
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* KONTROL DECK & TOMBOL SEJAJAR */
+.modern-control-deck {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 6;
+}
+
+.control-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.control-top-row .deck-btn {
+    flex: 1;
+    min-width: 0;
+}
+
+.deck-btn {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 0 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    background: linear-gradient(to bottom, #3a3a46 0%, #1e1e26 100%);
+    color: #fff;
+    border: 2px solid #555566;
+    box-shadow: 0 4px 0 #000, 0 6px 10px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 46px;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.deck-btn:hover {
+    filter: brightness(1.15);
+}
+
+.deck-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #000, 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.deck-btn.active {
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.info-btn { 
+    border-color: var(--gray-light); 
+    background: linear-gradient(to bottom, #4f4f5e, #2a2a36); 
+}
+
+.gold-border { 
+    border-color: var(--gold-dark); 
+    background: linear-gradient(to bottom, #5a4711, #302505); 
+    color: var(--gold); 
+}
+
+.white-border { 
+    border-color: #666; 
+    background: linear-gradient(to bottom, #444, #2b2b2b); 
+    color: #ccc; 
+}
+
+.main-spin-btn {
+    width: 100%;
+    height: 54px;
+    padding: 0;
+    background: linear-gradient(to bottom, var(--gold-bright) 0%, var(--gold-dark) 100%);
+    border: 2px solid var(--gold-bright);
+    color: #000;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    border-radius: 10px;
+    box-shadow: 0 6px 0 #6e540b, 0 10px 20px rgba(229, 193, 88, 0.4);
+    white-space: nowrap;
+}
+
+.main-spin-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #6e540b, 0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* TRAY KOIN */
+.coin-return-tray {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #121218 0%, #08080c 100%);
+    border: 1px solid #282835;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+}
+
+.tray-dark-hole {
+    background: #030305;
+    height: 32px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.falling-coins { 
+    font-size: 16px; 
+    opacity: 0; 
+    text-align: center; 
+    line-height: 32px;
+    transition: opacity 0.3s;
+}
+
+.falling-coins.active { 
+    opacity: 1; 
+    animation: bounceCoins 0.2s infinite alternate; 
+}
+
+@keyframes bounceCoins { 
+    0% { transform: translateY(-2px); } 
+    100% { transform: translateY(3px); } 
+}
+
+.tray-lip { 
+    font-size: 9px; 
+    color: #555; 
+    text-align: center; 
+    font-weight: bold; 
+    letter-spacing: 1px; 
+}
+
+/* POPUP PAYTABLE MODAL */
+.popup-overlay { 
+    position: absolute; 
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.85); 
+    z-index: 9; opacity: 0; 
+    pointer-events: none; 
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease; 
+}
+
+.popup-overlay.active { 
+    opacity: 1; 
+    pointer-events: auto; 
+    visibility: visible; 
+}
+
+.visual-paytable {
+    position: absolute;
+    bottom: -100%; left: 50%; transform: translateX(-50%); 
+    width: 100%; max-width: 800px; height: 70%;
+    background: #15151c;
+    border-radius: 20px 20px 0 0;
+    padding: 25px; z-index: 10;
+    display: flex; flex-direction: column;
+    transition: bottom 0.3s ease-out;
+    border-top: 3px solid var(--gold);
+}
+
+.visual-paytable.active { bottom: 0; }
+
+.paytable-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    border-bottom: 1px solid #333; 
+    padding-bottom: 12px; 
+    margin-bottom: 15px; 
+}
+
+.visual-paytable h3 { color: var(--gold); font-size: 20px; }
+.close-info-btn { background: transparent; border: none; color: #888; font-size: 28px; cursor: pointer; }
+.paytable-scroll { display: flex; flex-direction: column; gap: 12px; overflow-y: auto; }
+.visual-row { display: flex; justify-content: space-between; align-items: center; background: #22222d; padding: 12px 16px; border-radius: 6px; border: 1px solid #333; }
+.jackpot-row { border: 1px solid var(--gold); background: linear-gradient(to right, #2a2415, #22222d); }
+.symbols-display { font-size: 20px; letter-spacing: 3px; }
+.prize-value { font-family: 'Consolas', monospace; font-weight: bold; color: #fff; font-size: 14px; background: #111; padding: 4px 10px; border-radius: 4px; }
+.jackpot-row .prize-value { color: #000; background: var(--gold); }
+
+/* MODAL BONUS & FREE SPINS */
+.bonus-modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 100; opacity: 0; visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.bonus-modal-overlay.show {
+    opacity: 1; visibility: visible;
+}
+
+.bonus-modal-card {
+    background: linear-gradient(135deg, #1f1f2e 0%, #0d0d14 100%);
+    border: 2px solid var(--gold);
+    border-radius: 16px;
+    padding: 30px; text-align: center;
+    max-width: 400px; width: 90%;
+    box-shadow: 0 0 30px rgba(229, 193, 88, 0.4);
+}
+
+.modal-icon { font-size: 50px; margin-bottom: 10px; }
+.modal-badge {
+    font-size: 24px; font-weight: 900; color: #ff3b30;
+    margin: 15px 0; letter-spacing: 2px;
+}
+.modal-badge.win-total-style { color: var(--gold-bright); }
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.scatter-heartbeat {
+    animation: heartbeat 0.6s infinite ease-in-out;
+}
+
+.waterfall-coin {
+    pointer-events: none;
+    font-size: 18px;
+    animation: coinFall 0.6s linear forwards;
+}
+
+@keyframes coinFall {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(40px); opacity: 0; }
+}
+
+/* RESPONSIVE LAYOUT HP */
+@media (max-width: 768px) {
+    .modern-cabinet { padding: 12px; }
+    .attached-lever { display: none; }
+    .reel-container { height: 90px; }
+    .reel { line-height: 90px; height: 90px; }
+    .oled-dashboard { gap: 8px; }
+    .control-top-row { gap: 4px; }
+    .deck-btn {
+        font-size: 10px;
+        padding: 0 2px;
+        height: 40px;
+    }
+    .main-spin-btn {
+        height: 48px;
+        font-size: 16px;
+    }
+}
