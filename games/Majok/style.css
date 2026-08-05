@@ -432,12 +432,8 @@ body {
 .giant-count-box {
     margin: 15px 0; font-family: 'Arial Black', Impact, sans-serif; font-size: 26pt; font-weight: 900; line-height: 1.2;
     background: linear-gradient(180deg, #fff 0%, #ffea79 40%, #ffaa00 75%, #bd6c00 100%);
-    background-clip: text; 
-    -webkit-background-clip: text; 
-    -webkit-text-fill-color: transparent; 
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8)) drop-shadow(0 0 25px rgba(255,170,0,0.6));
-    animation: scaleBounce 1s infinite alternate ease-in-out; 
-    word-break: keep-all;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.8)) drop-shadow(0 0 25px rgba(255,170,0,0.6));
+    animation: scaleBounce 1s infinite alternate ease-in-out; word-break: keep-all;
 }
 .hidden { display: none !important; }
 .footer-banner-text { font-size: 11pt; color: #ffb3b3; letter-spacing: 1px; margin: 15px 0; text-shadow: 1px 1px 2px #000; }
@@ -636,7 +632,6 @@ body {
     font-weight: 900;
     color: #ffffff;
     background: linear-gradient(to bottom, #ffffff 0%, #fff099 40%, #e6a100 100%);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.7));
@@ -773,7 +768,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('games/majok/BG.png');
+    background-image: url('games/Majok/BG.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
