@@ -8,7 +8,7 @@ const gamesDatabase = [
     tag: 'HOT', 
     tagClass: 'tag-hot', 
     rtp: '98.8%', 
-    path: 'majok/index.html' 
+    path: 'games/majok/index.html' 
   },
   { 
     title: 'Spaceman', 
@@ -18,7 +18,7 @@ const gamesDatabase = [
     tag: 'TOP', 
     tagClass: 'tag-hot', 
     rtp: '97.5%', 
-    path: 'Spaceman/index.html' 
+    path: 'games/spaceman/index.html' 
   },
   { 
     title: 'Megawil Live', 
@@ -28,7 +28,7 @@ const gamesDatabase = [
     tag: 'Live', 
     tagClass: 'tag-hot', 
     rtp: '99.1%', 
-    path: 'Megawil/index.html' 
+    path: 'games/megawil/index.html' 
   },
   { 
     title: 'Coming Soon!!', 
@@ -38,7 +38,7 @@ const gamesDatabase = [
     tag: '', 
     tagClass: '', 
     rtp: '0%', 
-    path: 'https://Comingsoon.com/' 
+    path: 'games/coming-soon/index.html' 
   },
   { 
     title: 'Coming Soon!!', 
@@ -48,7 +48,7 @@ const gamesDatabase = [
     tag: 'LIVE', 
     tagClass: 'tag-hot', 
     rtp: '0%', 
-    path: 'https://Comingsoon.com/' 
+    path: 'games/coming-soon/index.html' 
   },
   { 
     title: 'Coming Soon!!', 
@@ -58,7 +58,7 @@ const gamesDatabase = [
     tag: '', 
     tagClass: '', 
     rtp: '0%', 
-    path: 'https://Comingsoon.com/' 
+    path: 'games/coming-soon/index.html' 
   }
 ];
 
