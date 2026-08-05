@@ -14,7 +14,7 @@ const gamesDatabase = [
     title: 'Spaceman', 
     vendor: 'Pragmatic Play', 
     category: 'Slot', 
-    icon: 'assets/logo/Spaceman.png', 
+    icon: 'assets/logo/spaceman.png', 
     tag: 'TOP', 
     tagClass: 'tag-hot', 
     rtp: '97.5%', 
