@@ -4,37 +4,37 @@ const gamesDatabase = [
     title: 'Majok Ways 2', 
     vendor: 'Pragmatic Play', 
     category: 'Slot', 
-    icon: 'assets/logo/majok.png', 
+    icon: 'assetlogo/majok.png', 
     tag: 'HOT', 
     tagClass: 'tag-hot', 
     rtp: '98.8%', 
-    path: 'games/majok/index.html' 
+    path: 'majok/index.html' 
   },
   { 
     title: 'Spaceman', 
     vendor: 'Pragmatic Play', 
     category: 'Slot', 
-    icon: 'assets/logo/spaceman.png', 
+    icon: 'assetlogo/Spaceman.png', 
     tag: 'TOP', 
     tagClass: 'tag-hot', 
     rtp: '97.5%', 
-    path: 'games/Spaceman/index.html' 
+    path: 'Spaceman/index.html' 
   },
   { 
     title: 'Megawil Live', 
     vendor: 'PG Soft', 
     category: 'Arcade', 
-    icon: 'assets/logo/Megawil.png', 
+    icon: 'assetlogo/Megawil.png', 
     tag: 'Live', 
     tagClass: 'tag-hot', 
     rtp: '99.1%', 
-    path: 'games/Megawil/index.html' 
+    path: 'Megawil/index.html' 
   },
   { 
     title: 'Coming Soon!!', 
     vendor: 'Habanero', 
     category: 'Arcade', 
-    icon: 'assets/logo/kv5.png', 
+    icon: 'assetlogo/kv5.png', 
     tag: '', 
     tagClass: '', 
     rtp: '0%', 
@@ -44,7 +44,7 @@ const gamesDatabase = [
     title: 'Coming Soon!!', 
     vendor: 'Pragmatic Play', 
     category: 'Casino', 
-    icon: 'assets/logo/baccarat.png', 
+    icon: 'assetlogo/baccarat.png', 
     tag: 'LIVE', 
     tagClass: 'tag-hot', 
     rtp: '0%', 
@@ -54,7 +54,7 @@ const gamesDatabase = [
     title: 'Coming Soon!!', 
     vendor: 'PG Soft', 
     category: 'Casino', 
-    icon: 'assets/logo/roulette.png', 
+    icon: 'assetlogo/roulette.png', 
     tag: '', 
     tagClass: '', 
     rtp: '0%', 
